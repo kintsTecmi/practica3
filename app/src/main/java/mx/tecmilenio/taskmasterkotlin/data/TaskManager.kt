@@ -14,9 +14,8 @@ object TaskManager {
     // Manejo de posible null con operador ?.
     fun findTaskById(id: Int): Task? = tasks.find { it.id == id }
     // Actualizar estado de tarea
-    fun completeTask(id: Int) {
-        findTaskById(id)?.apply {
-            isCompleted = true
+ fun completeTask(id: Int) {
+        val task = findTaskById(id) ?: throw IllegalArgumentException("ID $id no existe")
+        task.isCompleted = true
         }
-    }
 }
